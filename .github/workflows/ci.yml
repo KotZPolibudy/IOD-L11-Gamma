@@ -19,5 +19,3 @@ jobs:
         cache: maven
     - name: Build and verify
       run: mvn --batch-mode --update-snapshots verify
-    - name: Generate Javadoc
-      run: mvn site
