@@ -2,7 +2,7 @@ name: Project CI
 
 on:
   push:
-    branches: [ "main" , "feature/autodocumentation" ]
+    branches: [ "main" ]
 
 jobs:
   build:
