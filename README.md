@@ -21,7 +21,6 @@ Dla administratorów budynków, którzy pragną optymalizować koszty zarządzan
 - Developer - Oskar 'kilianczyko' Kiliańczyk : 151863 
 - Developer - Mikołaj 'MNOWAK1234' Nowak : 151813
 
-## Licensing
-This comment is licensed under the GNU General Public License v. 3.0.
+# Continuous Integration server status
 
-
+![example workflow](https://github.com/KotZPolibudy/IOD-L11-Gamma/actions/workflows/ci.yml/badge.svg)
