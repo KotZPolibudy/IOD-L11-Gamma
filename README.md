@@ -22,5 +22,4 @@ Dla administratorów budynków, którzy pragną optymalizować koszty zarządzan
 - Developer - Mikołaj 'MNOWAK1234' Nowak : 151813
 
 # Continuous Integration server status
-
-![example workflow](https://github.com/KotZPolibudy/IOD-L11-Gamma/actions/workflows/ci.yml/badge.svg)
+![workflow status](https://github.com/KotZPolibudy/IOD-L11-Gamma/actions/workflows/ci.yml/badge.svg)
