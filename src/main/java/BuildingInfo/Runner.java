@@ -72,7 +72,7 @@ public class Runner {
         }
         System.out.print("Room with biggest area is Room nr. _ with area of: ");
         System.out.println(maxArea);
-
+        //This is exactly why rooms need unique IDs!!!
 
 
 
