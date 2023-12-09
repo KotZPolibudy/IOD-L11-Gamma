@@ -2,6 +2,8 @@ package BuildingInfo;
 
 public class Room {
 
+    //private int Room_number;   //For "getting the biggest room" etc.
+    //private string Room_name;   //As an alternative
     private double surfaceArea;
     private double volume;
     private double lightIntensity;

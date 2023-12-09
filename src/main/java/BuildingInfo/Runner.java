@@ -56,6 +56,26 @@ public class Runner {
         System.out.println(Budynek.getFloor(1).getRoom(2-1).getSurfaceArea());
 
 
+        //Get Biggest Room on first floor
+        //ROOMS SHOULD HAVE "names"*   *as numbers, for example
+
+        Floor ground = Budynek.getFloor(0);
+        Room[] RArray = ground.getRooms();
+
+        int number;
+        double  maxArea = 0.0;
+        for (Room r : RArray){
+            if (r.getSurfaceArea() > maxArea){
+                maxArea = r.getSurfaceArea();
+                //number = r.getNumber();
+            }
+        }
+        System.out.print("Room with biggest area is Room nr. _ with area of: ");
+        System.out.println(maxArea);
+
+
+
+
         
 
 
