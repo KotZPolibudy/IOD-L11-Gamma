@@ -15,28 +15,25 @@ public class Main {
         try {
             String buildingJson = new String(Files.readAllBytes(Paths.get(jsonFilePath)));
 
-            // Example:
-            logger.info("Loaded JSON: {}", buildingJson);
-            // Perform further operations with the 'buildingJson' string
+            // Pass the loaded JSON to the Runner class
+            BuildingInfo.Runner.main(buildingJson);
+
+            // Example debug.log
+            if (logger.isDebugEnabled()) {
+                logger.debug("Place this when debugging"); // Logs at the DEBUG level
+            }
+            //Example of logger.warn
+            //logger.warn("Possible memory leak detected");
+            //Example of logger.error
+            /*try {
+                int result = 1/0;
+                logger.info("Division result: {}", result);
+            } catch (ArithmeticException ex) {
+                logger.error("Error occurred during division: {}", ex.getMessage());
+            }*/
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        BuildingInfo.Runner.main();
-
-        // Example debug.log
-        if (logger.isDebugEnabled()) {
-            logger.debug("Place this when debugging"); // Logs at the DEBUG level
-        }
-        //Example of logger.warn
-        //logger.warn("Possible memory leak detected");
-        //Example of logger.error
-        /*try {
-            int result = 1/0;
-            logger.info("Division result: {}", result);
-        } catch (ArithmeticException ex) {
-            logger.error("Error occurred during division: {}", ex.getMessage());
-        }*/
     }
 }
