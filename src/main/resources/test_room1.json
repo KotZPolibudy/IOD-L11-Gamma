@@ -1,0 +1,5 @@
+{
+  "entity": "room",
+  "function": "getEnergyConsumption",
+  "room": {"surfaceArea": 20, "volume": 30, "lightIntensity": 50, "energyConsumption": 100}
+}

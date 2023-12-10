@@ -5,36 +5,46 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 public class Runner {
 
     private static final Logger logger = LoggerFactory.getLogger(Runner.class);
 
-    public static void main(String buildingJson) {
-        // Example:
-        logger.info("Loaded JSON: {}", buildingJson);
+    public static void main(String Json) {
+        logger.info("Loaded JSON: {}", Json);
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            JsonNode buildingNode = objectMapper.readTree(buildingJson);
+            JsonNode buildingNode = objectMapper.readTree(Json);
+            //Check object type and parse it
+            Object entityObject = new EntityParser().parse(buildingNode);
+            //Check function type
+            String function = new FunctionParser().parseFunction(buildingNode);
+            logger.debug("Function: {}", function);
+            //Write to json
+            if (entityObject != null && function != null) {
+                Object result = invokeFunction(entityObject, function);
+                double doubleResult = (double) result; // Cast the Object to double
+                Result finalResult = new Result(doubleResult);
+                finalResult.writeToJsonFile("result.json");
+            }
 
-            Building building = BuildingParser.parseBuildingFromJson(buildingNode);
-
-            performBuildingOperations(building);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
-    private static void performBuildingOperations(Building building) {
-        double surfaceArea = building.calcSurfaceArea();
-        double volume = building.calcVolume();
-        double lightIntensity = building.calcLightIntensity();
-        double energyConsumption = building.calcEnergyConsumption();
-
-        logger.info("Surface: {}", surfaceArea);
-        logger.info("Volume: {}", volume);
-        logger.info("Light Intensity: {}", lightIntensity);
-        logger.info("Energy Consumption: {}", energyConsumption);
-        // You can perform other operations as needed
+    private static Object invokeFunction(Object entityObject, String functionName) {
+        try {
+            Method method = entityObject.getClass().getMethod(functionName);
+            Object result = method.invoke(entityObject);
+            logger.info("Result of {} is: {}", functionName, result);
+            return result;
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+            logger.error("Error invoking function {}: {}", functionName, e.getMessage());
+        }
+        return null;
     }
-
 }

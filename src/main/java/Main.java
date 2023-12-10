@@ -10,27 +10,13 @@ public class Main {
 
         logger.info("Hello and welcome!"); // Logs at the INFO level
         // Load the JSON file for testing
-        String jsonFilePath = "src/main/resources/test_building.json"; // Update with your file path
+        String jsonFilePath = "src/main/resources/test_building2.json"; // Update with your file path
 
         try {
-            String buildingJson = new String(Files.readAllBytes(Paths.get(jsonFilePath)));
+            String Json = new String(Files.readAllBytes(Paths.get(jsonFilePath)));
 
             // Pass the loaded JSON to the Runner class
-            BuildingInfo.Runner.main(buildingJson);
-
-            // Example debug.log
-            if (logger.isDebugEnabled()) {
-                logger.debug("Place this when debugging"); // Logs at the DEBUG level
-            }
-            //Example of logger.warn
-            //logger.warn("Possible memory leak detected");
-            //Example of logger.error
-            /*try {
-                int result = 1/0;
-                logger.info("Division result: {}", result);
-            } catch (ArithmeticException ex) {
-                logger.error("Error occurred during division: {}", ex.getMessage());
-            }*/
+            BuildingInfo.Runner.main(Json);
 
         } catch (Exception e) {
             e.printStackTrace();

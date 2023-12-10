@@ -1,9 +1,11 @@
 {
+  "entity": "building",
+  "function": "calcVolume",
   "building": {
     "floors": [
       {
         "rooms": [
-          {"surfaceArea": 20, "volume": 30, "lightIntensity": 50, "energyConsumption": 100},
+          {"surfaceArea": 30, "volume": 30, "lightIntensity": 50, "energyConsumption": 100},
           {"surfaceArea": 25, "volume": 35, "lightIntensity": 60, "energyConsumption": 120}
         ]
       },
