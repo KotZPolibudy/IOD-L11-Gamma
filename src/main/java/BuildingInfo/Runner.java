@@ -1,7 +1,12 @@
 package BuildingInfo;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Runner {
-    public static void main(){
+    private static final Logger logger = LoggerFactory.getLogger(Runner.class);
+
+    public static void main() {
         Building Budynek;
         Floor P1, P2;
         Room R1, R2, R3, R4, R5;
@@ -34,53 +39,26 @@ public class Runner {
 
         Budynek = new Building(Flist);
 
-        System.out.print("Surface: ");
-        System.out.println(Budynek.calcSurfaceArea());
-        System.out.print("Volume: ");
-        System.out.println(Budynek.calcVolume());
-        System.out.print("Light_Intensity: ");
-        System.out.println(Budynek.calcLightIntensity());
-        System.out.print("energy_Consumption: ");
-        System.out.println(Budynek.calcEnergyConsumption());
+        logger.info("Surface: {}", Budynek.calcSurfaceArea());
+        logger.info("Volume: {}", Budynek.calcVolume());
+        logger.info("Light_Intensity: {}", Budynek.calcLightIntensity());
+        logger.info("energy_Consumption: {}", Budynek.calcEnergyConsumption());
 
-        System.out.print("Parter - Surface: ");
-        System.out.println(Budynek.getFloor(0).calcSurfaceArea());
+        logger.info("Parter - Surface: {}", Budynek.getFloor(0).calcSurfaceArea());
+        logger.info("Pierwsze piętro - zużycie energii: {}", Budynek.getFloor(1).calcEnergyConsumption());
 
-        System.out.print("Pierwsze piętro - zużycie energii: ");
-        System.out.println(Budynek.getFloor(1).calcEnergyConsumption());
-
-        System.out.print("Pokój 1 - parter - Surface: ");
-        System.out.println(Budynek.getFloor(0).getRoom(0).getSurfaceArea());
-
-        System.out.print("Pokój 2 - piętro 1 - Surface: ");
-        System.out.println(Budynek.getFloor(1).getRoom(2-1).getSurfaceArea());
-
-
-        //Get Biggest Room on first floor
-        //ROOMS SHOULD HAVE "names"*   *as numbers, for example
+        logger.info("Pokój 1 - parter - Surface: {}", Budynek.getFloor(0).getRoom(0).getSurfaceArea());
+        logger.info("Pokój 2 - piętro 1 - Surface: {}", Budynek.getFloor(1).getRoom(2 - 1).getSurfaceArea());
 
         Floor ground = Budynek.getFloor(0);
         Room[] RArray = ground.getRooms();
 
-        int number;
-        double  maxArea = 0.0;
-        for (Room r : RArray){
-            if (r.getSurfaceArea() > maxArea){
+        double maxArea = 0.0;
+        for (Room r : RArray) {
+            if (r.getSurfaceArea() > maxArea) {
                 maxArea = r.getSurfaceArea();
-                //number = r.getNumber();
             }
         }
-        System.out.print("Room with biggest area is Room nr. _ with area of: ");
-        System.out.println(maxArea);
-        //This is exactly why rooms need unique IDs!!!
-
-
-
-        
-
-
-
-
+        logger.info("Room with biggest area has an area of: {}", maxArea);
     }
-
 }
