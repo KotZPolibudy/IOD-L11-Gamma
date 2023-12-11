@@ -10,7 +10,7 @@ public class Main {
 
         logger.info("Hello and welcome!"); // Logs at the INFO level
         // Load the JSON file for testing
-        String jsonFilePath = "src/main/resources/test_building2.json"; // Update with your file path
+        String jsonFilePath = "src/main/resources/test_building1.json"; // Update with your file path
 
         try {
             String Json = new String(Files.readAllBytes(Paths.get(jsonFilePath)));
