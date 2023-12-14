@@ -1,5 +1,5 @@
 # IOD-L11-Gamma
-Dla administratorów budynków, którzy pragną optymalizować koszty zarządzania budynkami  nasza aplikacja Building Info umożliwi pozyskanie informacji o parametrach budynku na poziomie pomieszczeń, kondygnacji oraz całych budynków. Aplikacja będzie dostępna poprzez GUI a także jako zdalne API dzięki czemu można ją zintegrować z istniejącymi narzędziami.
+For building administrators who want to optimize building management costs, our Building Info application will enable the acquisition of information about building parameters at the level of rooms, floors and entire buildings. The application will be available through a GUI and also as a remote API so it can be integrated with existing tools.
 
 # General Info
 - Lokacja to budynek, poziom, lub pomieszczenie
