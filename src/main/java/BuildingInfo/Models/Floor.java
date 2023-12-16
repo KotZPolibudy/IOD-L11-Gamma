@@ -43,7 +43,14 @@ public class Floor implements Entity {
         for (Room room : this.rooms) {
             sum += room.calcLightIntensity();
         }
-        return sum;
+        int numberOfRooms = this.rooms.length;
+
+        // Check if there are rooms to avoid division by zero
+        if (numberOfRooms > 0) {
+            return sum / numberOfRooms;
+        } else {
+            return 0.0; // or handle this case as per your requirement
+        }
     }
 
     @Override
@@ -52,8 +59,14 @@ public class Floor implements Entity {
         for (Room room : this.rooms) {
             sum += room.calcEnergyConsumption();
         }
-        return sum;
+        int numberOfRooms = this.rooms.length;
+
+        // Check if there are rooms to avoid division by zero
+        if (numberOfRooms > 0) {
+            return sum / numberOfRooms;
+        } else {
+            return 0.0; // or handle this case as per your requirement
+        }
     }
 
-    // Other methods from the Floor class
 }

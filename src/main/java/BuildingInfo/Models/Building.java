@@ -39,20 +39,34 @@ public class Building implements Entity {
     @Override
     public double calcLightIntensity() {
         double sum = 0.0;
+        int totalFloors = this.floors.length;
+
         for (Floor floor : this.floors) {
             sum += floor.calcLightIntensity();
         }
-        return sum;
+
+        // Check if there are floors to avoid division by zero
+        if (totalFloors > 0) {
+            return sum / totalFloors;
+        } else {
+            return 0.0; // or handle this case as per your requirement
+        }
     }
 
     @Override
     public double calcEnergyConsumption() {
         double sum = 0.0;
+        int totalFloors = this.floors.length;
+
         for (Floor floor : this.floors) {
             sum += floor.calcEnergyConsumption();
         }
-        return sum;
-    }
 
-    // Other methods from the Building class
+        // Check if there are floors to avoid division by zero
+        if (totalFloors > 0) {
+            return sum / totalFloors;
+        } else {
+            return 0.0; // or handle this case as per your requirement
+        }
+    }
 }
