@@ -1,9 +1,7 @@
-package BuildingInfo;
+package BuildingInfo.Models;
 
-public class Room {
+public class Room implements Entity {
 
-    //private int Room_number;   //For "getting the biggest room" etc.
-    //private string Room_name;   //As an alternative
     private double surfaceArea;
     private double volume;
     private double lightIntensity;
@@ -16,16 +14,23 @@ public class Room {
         this.energyConsumption = energyConsumption;
     }
 
-    public double getSurfaceArea(){
+    @Override
+    public double calcSurfaceArea() {
         return this.surfaceArea;
     }
-    public double getVolume(){
+
+    @Override
+    public double calcVolume() {
         return this.volume;
     }
-    public double getLightIntensity(){
+
+    @Override
+    public double calcLightIntensity() {
         return this.lightIntensity;
     }
-    public double getEnergyConsumption(){
+
+    @Override
+    public double calcEnergyConsumption() {
         return this.energyConsumption;
     }
 }

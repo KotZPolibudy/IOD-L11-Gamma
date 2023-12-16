@@ -1,4 +1,4 @@
-package BuildingInfo;
+package BuildingInfo.Services;
 
 import com.fasterxml.jackson.databind.JsonNode;
 

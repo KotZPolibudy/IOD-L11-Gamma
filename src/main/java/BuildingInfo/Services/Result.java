@@ -1,4 +1,4 @@
-package BuildingInfo;
+package BuildingInfo.Services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;

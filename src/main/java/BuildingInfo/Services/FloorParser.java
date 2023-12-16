@@ -1,5 +1,6 @@
-package BuildingInfo;
+package BuildingInfo.Services;
 
+import BuildingInfo.Models.*;
 import com.fasterxml.jackson.databind.JsonNode;
 
 public class FloorParser {
