@@ -1,5 +1,7 @@
 package BuildingInfo.Models;
 
+import com.fasterxml.jackson.annotation.*;
+
 public class Room implements Entity {
 
     private double surfaceArea;
@@ -12,6 +14,26 @@ public class Room implements Entity {
         this.volume = volume;
         this.lightIntensity = lightIntensity;
         this.energyConsumption = energyConsumption;
+    }
+
+    @JsonProperty("surfaceArea")
+    public double getSurfaceArea() {
+        return surfaceArea;
+    }
+
+    @JsonProperty("volume")
+    public double getVolume() {
+        return volume;
+    }
+
+    @JsonProperty("lightIntensity")
+    public double getLightIntensity() {
+        return lightIntensity;
+    }
+
+    @JsonProperty("energyConsumption")
+    public double getEnergyConsumption() {
+        return energyConsumption;
     }
 
     @Override

@@ -9,11 +9,10 @@ public class RoomParser {
     private static final Logger logger = LoggerFactory.getLogger(RoomParser.class);
 
     public static Room parseRoomFromJson(JsonNode roomNode) {
-        JsonNode room = roomNode.get("room");
-        double surfaceArea = room.get("surfaceArea").asDouble();
-        double volume = room.get("volume").asDouble();
-        double lightIntensity = room.get("lightIntensity").asDouble();
-        double energyConsumption = room.get("energyConsumption").asDouble();
+        double surfaceArea = roomNode.get("surfaceArea").asDouble();
+        double volume = roomNode.get("volume").asDouble();
+        double lightIntensity = roomNode.get("lightIntensity").asDouble();
+        double energyConsumption = roomNode.get("energyConsumption").asDouble();
 
         return new Room(surfaceArea, volume, lightIntensity, energyConsumption);
     }

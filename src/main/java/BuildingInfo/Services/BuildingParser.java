@@ -5,9 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 public class BuildingParser {
     public static Building parseBuildingFromJson(JsonNode buildingNode) {
-        JsonNode building = buildingNode.get("building");
-
-        JsonNode floors = building.get("floors");
+        JsonNode floors = buildingNode.get("floors");
         Floor[] buildingFloors = new Floor[floors.size()];
 
         for (int i = 0; i < floors.size(); i++) {

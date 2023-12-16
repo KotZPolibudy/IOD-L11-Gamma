@@ -1,6 +1,4 @@
 {
-  "entity": "floor",
-  "function": "calcLightIntensity",
   "floor": {
     "rooms": [
       {"surfaceArea": 20, "volume": 30, "lightIntensity": 50, "energyConsumption": 100},
