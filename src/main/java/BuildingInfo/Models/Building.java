@@ -1,5 +1,7 @@
 package BuildingInfo.Models;
 
+import com.fasterxml.jackson.annotation.*;
+
 public class Building implements Entity {
 
     private Floor[] floors;
@@ -8,8 +10,14 @@ public class Building implements Entity {
         this.floors = floors;
     }
 
-    // Other methods and constructors
+    @JsonProperty("floors")
+    public Floor[] getFloors() {
+        return floors;
+    }
 
+    public void setFloors(Floor[] floors) {
+        this.floors = floors;
+    }
     @Override
     public double calcSurfaceArea() {
         double sum = 0.0;

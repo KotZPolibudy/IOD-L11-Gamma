@@ -1,6 +1,4 @@
 {
-  "entity": "building",
-  "function": "calcVolume",
   "building": {
     "floors": [
       {

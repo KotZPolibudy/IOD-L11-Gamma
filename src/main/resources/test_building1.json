@@ -1,6 +1,4 @@
 {
-  "entity": "building",
-  "function": "calcSurfaceArea",
   "building": {
     "floors": [
       {

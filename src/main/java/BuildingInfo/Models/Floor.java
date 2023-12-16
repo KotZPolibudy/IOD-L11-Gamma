@@ -1,5 +1,7 @@
 package BuildingInfo.Models;
 
+import com.fasterxml.jackson.annotation.*;
+
 public class Floor implements Entity {
 
     private Room[] rooms;
@@ -8,7 +10,14 @@ public class Floor implements Entity {
         this.rooms = rooms;
     }
 
-    // Other methods and constructors
+    @JsonProperty("rooms")
+    public Room[] getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(Room[] rooms) {
+        this.rooms = rooms;
+    }
 
     @Override
     public double calcSurfaceArea() {
