@@ -6,6 +6,10 @@ public class Floor implements Entity {
 
     private Room[] rooms;
 
+    /**
+     * Public constructor of Floor-Entity
+     * @param rooms array of Room-Entity
+     */
     public Floor(Room[] rooms) {
         this.rooms = rooms;
     }
@@ -19,6 +23,10 @@ public class Floor implements Entity {
         this.rooms = rooms;
     }
 
+    /**
+     * Calculate surface area of Floor
+     * @return surface area of Floor
+     */
     @Override
     public double calcSurfaceArea() {
         double sum = 0.0;
@@ -28,6 +36,10 @@ public class Floor implements Entity {
         return sum;
     }
 
+    /**
+     * Calculate volume of Floor
+     * @return volume of Floor
+     */
     @Override
     public double calcVolume() {
         double sum = 0.0;
@@ -37,6 +49,10 @@ public class Floor implements Entity {
         return sum;
     }
 
+    /**
+     * Calculate light intensity of Floor
+     * @return light intensity of Floor
+     */
     @Override
     public double calcLightIntensity() {
         double sum = 0.0;
@@ -53,6 +69,10 @@ public class Floor implements Entity {
         }
     }
 
+    /**
+     * Calculate energy consumption of Floor
+     * @return energy consumption of Floor
+     */
     @Override
     public double calcEnergyConsumption() {
         double sum = 0.0;
