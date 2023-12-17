@@ -8,18 +8,19 @@ import org.slf4j.LoggerFactory;
 
 public class FloorParser {
 
-    private static final Logger logger = LoggerFactory.getLogger(FloorParser.class);
     public static Floor parseFloorFromJson(JsonNode floorNode) {
+        ch.qos.logback.classic.Logger logger = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
+        logger.setLevel(ch.qos.logback.classic.Level.DEBUG);
         JsonNode roomsNode = floorNode.get("rooms");
         Room[] floorRooms = new Room[roomsNode.size()];
-
+        logger.info("Rooms loaded succesully");
         for (int j = 0; j < roomsNode.size(); j++) {
             JsonNode room = roomsNode.get(j);
             double surfaceArea = room.get("surfaceArea").asDouble();
             double volume = room.get("volume").asDouble();
             double lightIntensity = room.get("lightIntensity").asDouble();
             double energyConsumption = room.get("energyConsumption").asDouble();
-
+            logger.debug("Energy Conspumption {}", energyConsumption);
             floorRooms[j] = new Room(surfaceArea, volume, lightIntensity, energyConsumption);
         }
 
