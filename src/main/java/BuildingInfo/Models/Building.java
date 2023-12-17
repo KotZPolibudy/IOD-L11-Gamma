@@ -58,44 +58,28 @@ public class Building implements Entity {
     }
 
     /**
-     * Calculate average light intensity of Building per Floor
-     * @return average light intensity of Building per Floor
+     * Calculate mean light intensity for surface area of Building per Floor
+     * @return mean light intensity for surface area of Building per Floor
      */
     @Override
     public double calcLightIntensity() {
-        double sum = 0.0;
-        int totalFloors = this.floors.length;
-
+        double sumLightIntensity = 0.0;
         for (Floor floor : this.floors) {
-            sum += floor.calcLightIntensity();
+            sumLightIntensity += floor.calcLightIntensity();
         }
-
-        // Check if there are floors to avoid division by zero
-        if (totalFloors > 0) {
-            return sum / totalFloors;
-        } else {
-            return 0.0; // or handle this case as per your requirement
-        }
+        return sumLightIntensity / calcSurfaceArea();
     }
 
     /**
-     * Calculate average energy consumption of Building per Floor
-     * @return average energy consumption of Building per Floor
+     * Calculate mean energy consumption for volume of Building per Floor
+     * @return  mean energy consumption for volume of Building per Floor
      */
     @Override
     public double calcEnergyConsumption() {
-        double sum = 0.0;
-        int totalFloors = this.floors.length;
-
+        double sumEnergyConsumption = 0.0;
         for (Floor floor : this.floors) {
-            sum += floor.calcEnergyConsumption();
+            sumEnergyConsumption += floor.calcEnergyConsumption();
         }
-
-        // Check if there are floors to avoid division by zero
-        if (totalFloors > 0) {
-            return sum / totalFloors;
-        } else {
-            return 0.0; // or handle this case as per your requirement
-        }
+        return sumEnergyConsumption / calcVolume();
     }
 }

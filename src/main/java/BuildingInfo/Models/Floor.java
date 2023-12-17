@@ -58,43 +58,29 @@ public class Floor implements Entity {
     }
 
     /**
-     * Calculate light intensity of Floor
-     * @return light intensity of Floor
+     * Calculate mean light intensity for surface area of Floor
+     * @return mean light intensity for surface area of Floor
      */
     @Override
     public double calcLightIntensity() {
-        double sum = 0.0;
+        double sumLightIntensity = 0.0;
         for (Room room : this.rooms) {
-            sum += room.calcLightIntensity();
+            sumLightIntensity += room.calcLightIntensity();
         }
-        int numberOfRooms = this.rooms.length;
-
-        // Check if there are rooms to avoid division by zero
-        if (numberOfRooms > 0) {
-            return sum / numberOfRooms;
-        } else {
-            return 0.0; // or handle this case as per your requirement
-        }
+        return sumLightIntensity / calcSurfaceArea();
     }
 
     /**
-     * Calculate energy consumption of Floor
-     * @return energy consumption of Floor
+     * Calculate mean energy consumption for volume of Floor
+     * @return mean energy consumption for volume of Floor
      */
     @Override
     public double calcEnergyConsumption() {
-        double sum = 0.0;
+        double sumEnergyConsumption = 0.0;
         for (Room room : this.rooms) {
-            sum += room.calcEnergyConsumption();
+            sumEnergyConsumption += room.calcEnergyConsumption();
         }
-        int numberOfRooms = this.rooms.length;
-
-        // Check if there are rooms to avoid division by zero
-        if (numberOfRooms > 0) {
-            return sum / numberOfRooms;
-        } else {
-            return 0.0; // or handle this case as per your requirement
-        }
+        return sumEnergyConsumption / calcVolume();
     }
 
 }
