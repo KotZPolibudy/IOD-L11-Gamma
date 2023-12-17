@@ -58,8 +58,8 @@ public class Building implements Entity {
     }
 
     /**
-     * Calculate mean light intensity for surface area of Building per Floor
-     * @return mean light intensity for surface area of Building per Floor
+     * Calculate mean light intensity of Building per Floor
+     * @return mean light intensity of Building per Floor
      */
     @Override
     public double calcLightIntensity() {
@@ -67,12 +67,12 @@ public class Building implements Entity {
         for (Floor floor : this.floors) {
             sumLightIntensity += floor.calcLightIntensity();
         }
-        return sumLightIntensity / calcSurfaceArea();
+        return sumLightIntensity / getFloors().length;
     }
 
     /**
-     * Calculate mean energy consumption for volume of Building per Floor
-     * @return  mean energy consumption for volume of Building per Floor
+     * Calculate mean energy consumption of Building per Floor
+     * @return  mean energy consumption of Building per Floor
      */
     @Override
     public double calcEnergyConsumption() {
@@ -80,6 +80,6 @@ public class Building implements Entity {
         for (Floor floor : this.floors) {
             sumEnergyConsumption += floor.calcEnergyConsumption();
         }
-        return sumEnergyConsumption / calcVolume();
+        return sumEnergyConsumption / getFloors().length;
     }
 }
