@@ -14,11 +14,19 @@ public class Floor implements Entity {
         this.rooms = rooms;
     }
 
+    /**
+     * JSON rooms getter of Floor
+     * @return array of Room-Entity
+     */
     @JsonProperty("rooms")
     public Room[] getRooms() {
         return rooms;
     }
 
+    /**
+     * Public setter of rooms
+     * @param rooms array of Room-Entity
+     */
     public void setRooms(Room[] rooms) {
         this.rooms = rooms;
     }

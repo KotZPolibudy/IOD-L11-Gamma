@@ -1,0 +1,23 @@
+cmd.exe
+/X
+/C
+""C:\Program Files\Java\jdk-17\bin\javadoc.exe" @options @packages"
+C:\Users\oskki\Desktop\java\Sprint1\IOD-L11-Gamma\target\site\apidocs\allclasses-index.html = 1702812828476
+C:\Users\oskki\Desktop\java\Sprint1\IOD-L11-Gamma\target\site\apidocs\allpackages-index.html = 1702812828481
+C:\Users\oskki\Desktop\java\Sprint1\IOD-L11-Gamma\target\site\apidocs\element-list = 1702812828322
+C:\Users\oskki\Desktop\java\Sprint1\IOD-L11-Gamma\target\site\apidocs\help-doc.html = 1702812828528
+C:\Users\oskki\Desktop\java\Sprint1\IOD-L11-Gamma\target\site\apidocs\index-all.html = 1702812828518
+C:\Users\oskki\Desktop\java\Sprint1\IOD-L11-Gamma\target\site\apidocs\index.html = 1702812828457
+C:\Users\oskki\Desktop\java\Sprint1\IOD-L11-Gamma\target\site\apidocs\jquery-ui.overrides.css = 1702812828558
+C:\Users\oskki\Desktop\java\Sprint1\IOD-L11-Gamma\target\site\apidocs\member-search-index.js = 1702812828493
+C:\Users\oskki\Desktop\java\Sprint1\IOD-L11-Gamma\target\site\apidocs\module-search-index.js = 1702812828484
+C:\Users\oskki\Desktop\java\Sprint1\IOD-L11-Gamma\target\site\apidocs\options = 1702812826950
+C:\Users\oskki\Desktop\java\Sprint1\IOD-L11-Gamma\target\site\apidocs\overview-summary.html = 1702812828521
+C:\Users\oskki\Desktop\java\Sprint1\IOD-L11-Gamma\target\site\apidocs\overview-tree.html = 1702812828451
+C:\Users\oskki\Desktop\java\Sprint1\IOD-L11-Gamma\target\site\apidocs\package-search-index.js = 1702812828486
+C:\Users\oskki\Desktop\java\Sprint1\IOD-L11-Gamma\target\site\apidocs\packages = 1702812826952
+C:\Users\oskki\Desktop\java\Sprint1\IOD-L11-Gamma\target\site\apidocs\script.js = 1702812828536
+C:\Users\oskki\Desktop\java\Sprint1\IOD-L11-Gamma\target\site\apidocs\search.js = 1702812828539
+C:\Users\oskki\Desktop\java\Sprint1\IOD-L11-Gamma\target\site\apidocs\stylesheet.css = 1702812828532
+C:\Users\oskki\Desktop\java\Sprint1\IOD-L11-Gamma\target\site\apidocs\tag-search-index.js = 1702812828496
+C:\Users\oskki\Desktop\java\Sprint1\IOD-L11-Gamma\target\site\apidocs\type-search-index.js = 1702812828490
