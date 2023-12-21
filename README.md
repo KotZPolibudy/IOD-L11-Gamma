@@ -41,7 +41,7 @@ Dla administratorów budynków, którzy pragną optymalizować koszty zarządzan
 
 # Współautorzy
 
-- PO Właściciela produktu - Wojciech 'KotZPolibudy' Kot: 151879
+- PO (Właściciel produktu) - Wojciech 'KotZPolibudy' Kot: 151879
 - Scrum Master - Kamil 'GaussX0' Małecki: 151861
 - Deweloper - Oskar 'kilianczyko' Kiliańczyk: 151863
 - Deweloper - Mikołaj 'MNOWAK1234' Nowak: 151813
