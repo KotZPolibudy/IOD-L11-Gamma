@@ -16,12 +16,13 @@ public class FloorParser {
         logger.info("Rooms loaded succesully");
         for (int j = 0; j < roomsNode.size(); j++) {
             JsonNode room = roomsNode.get(j);
+            String name = room.get("name").asText();
             double surfaceArea = room.get("surfaceArea").asDouble();
             double volume = room.get("volume").asDouble();
             double lightIntensity = room.get("lightIntensity").asDouble();
             double energyConsumption = room.get("energyConsumption").asDouble();
             logger.debug("Energy Conspumption {}", energyConsumption);
-            floorRooms[j] = new Room(surfaceArea, volume, lightIntensity, energyConsumption);
+            floorRooms[j] = new Room(name, surfaceArea, volume, lightIntensity, energyConsumption);
         }
 
         return new Floor(floorRooms);

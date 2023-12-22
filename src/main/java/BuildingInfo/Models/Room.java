@@ -2,25 +2,40 @@ package BuildingInfo.Models;
 
 import com.fasterxml.jackson.annotation.*;
 
-public class Room implements Entity {
+import java.util.ArrayList;
+import java.util.List;
 
+@JsonPropertyOrder({"name", "surfaceArea", "volume", "lightIntensity", "energyConsumption"})
+public class Room implements Entity {
     private double surfaceArea;
     private double volume;
     private double lightIntensity;
     private double energyConsumption;
+    private String name;
 
     /**
      * Public constructor of Room-Entity
+     * @param name String of characters, given name of Room
      * @param surfaceArea positive value, given surface area of Room
      * @param volume positive value, given volume of Room
      * @param lightIntensity positive value, given light intensity of Room
      * @param energyConsumption positive value, given energy consumption of Room
      */
-    public Room(double surfaceArea, double volume, double lightIntensity, double energyConsumption) {
+    public Room(String name, double surfaceArea, double volume, double lightIntensity, double energyConsumption) {
+        this.name = name;
         this.surfaceArea = surfaceArea;
         this.volume = volume;
         this.lightIntensity = lightIntensity;
         this.energyConsumption = energyConsumption;
+    }
+
+    /**
+     * JSON name getter of Room
+     * @return name of Room
+     */
+    @JsonProperty("name")
+    public String getName() {
+        return name;
     }
 
     /**
@@ -93,5 +108,14 @@ public class Room implements Entity {
     @Override
     public double calcEnergyConsumption() {
         return this.energyConsumption;
+    }
+
+    @Override
+    public List<String> findHighConsumption(double limit) {
+        List<String> highConsumptionEntities = new ArrayList<>();
+        if (this.energyConsumption > limit) {
+            highConsumptionEntities.add(this.name);
+        }
+        return highConsumptionEntities;
     }
 }

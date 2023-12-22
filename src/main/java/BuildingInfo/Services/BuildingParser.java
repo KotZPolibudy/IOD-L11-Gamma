@@ -15,12 +15,13 @@ public class BuildingParser {
 
             for (int j = 0; j < rooms.size(); j++) {
                 JsonNode room = rooms.get(j);
+                String name = room.get("name").asText();
                 double surfaceArea = room.get("surfaceArea").asDouble();
                 double volume = room.get("volume").asDouble();
                 double lightIntensity = room.get("lightIntensity").asDouble();
                 double energyConsumption = room.get("energyConsumption").asDouble();
 
-                floorRooms[j] = new Room(surfaceArea, volume, lightIntensity, energyConsumption);
+                floorRooms[j] = new Room(name, surfaceArea, volume, lightIntensity, energyConsumption);
             }
 
             buildingFloors[i] = new Floor(floorRooms);

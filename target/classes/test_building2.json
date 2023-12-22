@@ -3,14 +3,14 @@
     "floors": [
       {
         "rooms": [
-          {"surfaceArea": 30, "volume": 30, "lightIntensity": 50, "energyConsumption": 100},
-          {"surfaceArea": 25, "volume": 35, "lightIntensity": 60, "energyConsumption": 120}
+          {"name": "Room1", "surfaceArea": 30, "volume": 30, "lightIntensity": 50, "energyConsumption": 100},
+          {"name": "Room2", "surfaceArea": 25, "volume": 35, "lightIntensity": 60, "energyConsumption": 120}
         ]
       },
       {
         "rooms": [
-          {"surfaceArea": 18, "volume": 28, "lightIntensity": 45, "energyConsumption": 90},
-          {"surfaceArea": 22, "volume": 32, "lightIntensity": 55, "energyConsumption": 110}
+          {"name": "Room3", "surfaceArea": 18, "volume": 28, "lightIntensity": 45, "energyConsumption": 90},
+          {"name": "Room4", "surfaceArea": 22, "volume": 32, "lightIntensity": 55, "energyConsumption": 110}
         ]
       }
     ]
