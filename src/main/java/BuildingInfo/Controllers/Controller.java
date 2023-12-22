@@ -84,6 +84,6 @@ public class Controller {
             throw new RuntimeException("Error invoking calcEnergyConsumption() method");
         }
         return response;
-    }
+    }gi
 
 }
