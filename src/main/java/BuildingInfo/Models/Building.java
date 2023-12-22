@@ -89,7 +89,10 @@ public class Building implements Entity {
     @Override
     public List<String> findHighConsumption(double limit) {
         List<String> highConsumptionEntities = new ArrayList<>();
-        highConsumptionEntities.add("Building");
+        highConsumptionEntities.add("BuildingOBJ1");
+        highConsumptionEntities.add("BuildingOBJ2");
+        highConsumptionEntities.add("BuildingOBJ3");
+        highConsumptionEntities.add("BuildingOBJ4");
         return highConsumptionEntities;
     }
 }

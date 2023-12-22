@@ -88,7 +88,9 @@ public class Floor implements Entity {
     @Override
     public List<String> findHighConsumption(double limit) {
         List<String> highConsumptionEntities = new ArrayList<>();
-        highConsumptionEntities.add("Floor");
+        highConsumptionEntities.add("ObjectF1");
+        highConsumptionEntities.add("ObjectF2");
+        highConsumptionEntities.add("ObjectF3");
         return highConsumptionEntities;
     }
 
