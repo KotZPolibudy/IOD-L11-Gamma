@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -86,5 +87,18 @@ public class Controller {
         return response;
     }
 
+    @GetMapping("/HighConsumptionEntities")
+    public Map<String, List<String>> getHighConsumptionEntities(@RequestParam double limit) {
+        Map<String, List<String>> response = new HashMap<>();
+        try {
+            Method method = entity.getClass().getMethod("findHighConsumption", double.class);
+            List<String> result = (List<String>) method.invoke(entity, limit);
+            response.put("Rooms with too big energy consumption", result);
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error invoking findHighConsumption() method");
+        }
 
+        return response;
+    }
 }

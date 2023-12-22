@@ -2,6 +2,9 @@ package BuildingInfo.Models;
 
 import com.fasterxml.jackson.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Building implements Entity {
 
     private Floor[] floors;
@@ -81,5 +84,15 @@ public class Building implements Entity {
             sumEnergyConsumption += floor.calcEnergyConsumption();
         }
         return sumEnergyConsumption / getFloors().length;
+    }
+
+    @Override
+    public List<String> findHighConsumption(double limit) {
+        List<String> highConsumptionEntities = new ArrayList<>();
+        highConsumptionEntities.add("BuildingOBJ1");
+        highConsumptionEntities.add("BuildingOBJ2");
+        highConsumptionEntities.add("BuildingOBJ3");
+        highConsumptionEntities.add("BuildingOBJ4");
+        return highConsumptionEntities;
     }
 }
