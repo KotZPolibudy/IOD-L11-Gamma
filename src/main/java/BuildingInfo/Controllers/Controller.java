@@ -13,6 +13,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:5173") // Replace with your frontend URL
 public class Controller {
     private EntityParser entityParser;
     private Object entity;
