@@ -94,7 +94,7 @@ public class Controller {
         try {
             Method method = entity.getClass().getMethod("findHighConsumption", double.class);
             List<String> result = (List<String>) method.invoke(entity, limit);
-            response.put("Rooms with too big energy consumption", result);
+            response.put("RoomNames", result);
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
             throw new RuntimeException("Error invoking findHighConsumption() method");
