@@ -9,6 +9,7 @@ function App() {
   const [responseLightIntensity, setResponseLightIntensity] = useState('');
   const [responseEnergyConsumption, setResponseEnergyConsumption] = useState('');
   const [responseHighConsumptionEntities, setResponseHighConsumptionEntities] = useState([]);
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleSendJson = async () => {
     try {
@@ -40,6 +41,7 @@ function App() {
       setResponseLightIntensity('');
       setResponseEnergyConsumption('');
       setResponseHighConsumptionEntities([]);
+      setShowAlert(false);
     } catch (error) {
       // Handle error
       console.error(error);
@@ -91,6 +93,11 @@ function App() {
       const highConsumptionEntitiesData = await ApiService.getHighConsumptionEntities(100); // Example limit value
       setResponseMessage('');
       setResponseHighConsumptionEntities(highConsumptionEntitiesData.RoomNames); // Update state with high consumption entities data
+      if (highConsumptionEntitiesData.RoomNames.length === 0) {
+        setShowAlert(true);
+      } else {
+        setShowAlert(false);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -133,6 +140,7 @@ function App() {
             ))}
           </ul>
         )}
+        {showAlert && <p>No high consumption entities found.</p>}
       </div>
     </div>
   );
