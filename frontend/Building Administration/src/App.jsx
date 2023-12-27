@@ -8,7 +8,7 @@ function App() {
   const [responseSurfaceArea, setResponseSurfaceArea] = useState('');
   const [responseLightIntensity, setResponseLightIntensity] = useState('');
   const [responseEnergyConsumption, setResponseEnergyConsumption] = useState('');
-  const [responseHighConsumptionEntities, setResponseHighConsumptionEntities] = useState('');
+  const [responseHighConsumptionEntities, setResponseHighConsumptionEntities] = useState([]);
 
   const handleSendJson = async () => {
     try {
@@ -39,7 +39,7 @@ function App() {
       setResponseVolume('');
       setResponseLightIntensity('');
       setResponseEnergyConsumption('');
-      setResponseHighConsumptionEntities('');
+      setResponseHighConsumptionEntities([]);
     } catch (error) {
       // Handle error
       console.error(error);
@@ -90,7 +90,7 @@ function App() {
     try {
       const highConsumptionEntitiesData = await ApiService.getHighConsumptionEntities(100); // Example limit value
       setResponseMessage('');
-      setResponseHighConsumptionEntities(`High Consumption Entities: ${highConsumptionEntitiesData.RoomNames}`); // Update state with high consumption entities data
+      setResponseHighConsumptionEntities(highConsumptionEntitiesData.RoomNames); // Update state with high consumption entities data
     } catch (error) {
       console.error(error);
     }
@@ -126,7 +126,13 @@ function App() {
 
       <div>
         <button onClick={handleHighConsumptionEntities}>High Consumption Entities</button>
-        {responseHighConsumptionEntities && <p>{responseHighConsumptionEntities}</p>}
+        {responseHighConsumptionEntities.length > 0 && (
+          <ul>
+            {responseHighConsumptionEntities.map((entity, index) => (
+              <li key={index}>{entity}</li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );
