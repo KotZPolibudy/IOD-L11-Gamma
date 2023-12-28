@@ -11,14 +11,18 @@ function App() {
   const [responseHighConsumptionEntities, setResponseHighConsumptionEntities] = useState([]);
   const [showAlert, setShowAlert] = useState(false);
   
-  const [rooms, setRooms] = useState([]);
-  const [floors, setFloors] = useState([]);
+  const [unassignedRooms, setUnassignedRooms] = useState([]);
   const [roomDetails, setRoomDetails] = useState({
     name: '',
     surfaceArea: '',
     volume: '',
     lightIntensity: '',
     energyConsumption: ''
+  });
+  const [workingFloor, setWorkingFloor] = useState([]);
+  const [unassignedFloors, setUnassignedFloors] = useState([]);
+  const [floorDetails, setFloorDetails] = useState({
+    rooms: [] // Initialize floor details with an empty list of rooms
   });
 
   const handleInputChange = (e) => {
@@ -31,7 +35,7 @@ function App() {
 
   const handleAddRoom = () => {
     const newRoom = { ...roomDetails };
-    setRooms((prevRooms) => [...prevRooms, newRoom]);
+    setUnassignedRooms((prevRooms) => [...prevRooms, newRoom]);
     setRoomDetails({
       name: '',
       surfaceArea: '',
@@ -39,6 +43,14 @@ function App() {
       lightIntensity: '',
       energyConsumption: ''
     });
+  };
+
+  const handleAddFloor = () => {
+    const newFloor = {
+      rooms: [...workingFloor]
+    };
+    setUnassignedFloors((prevFloors) => [...prevFloors, newFloor]);
+    setWorkingFloor([]); // Reset the working floor after creating a floor
   };
 
   const handleRoomDragStart = (e, index) => {
@@ -63,14 +75,14 @@ function App() {
   
     if (destination === 'rooms') {
       // Move room from floors to rooms
-      roomToMove = floors[newIndex];
-      setFloors((prevFloors) => prevFloors.filter((floor, index) => index !== newIndex));
-      setRooms((prevRooms) => [...prevRooms, roomToMove]);
+      roomToMove = workingFloor[newIndex];
+      setWorkingFloor((prevFloors) => prevFloors.filter((floor, index) => index !== newIndex));
+      setUnassignedRooms((prevRooms) => [...prevRooms, roomToMove]);
     } else if (destination === 'floors') {
       // Move room from rooms to floors
-      roomToMove = rooms[newIndex];
-      setRooms((prevRooms) => prevRooms.filter((room, index) => index !== newIndex));
-      setFloors((prevFloors) => [...prevFloors, roomToMove]);
+      roomToMove = unassignedRooms[newIndex];
+      setUnassignedRooms((prevRooms) => prevRooms.filter((room, index) => index !== newIndex));
+      setWorkingFloor((prevFloors) => [...prevFloors, roomToMove]);
     }
   };
   
@@ -291,7 +303,7 @@ function App() {
       <div className="method">
         <h2>Unassigned Rooms</h2>
         <div className="room-list">
-          {rooms.map((room, index) => (
+          {unassignedRooms.map((room, index) => (
             <div
               key={index}
               draggable
@@ -311,7 +323,7 @@ function App() {
       <div className="method">
         <h2>Create Floor</h2>
         <div className="room-list">
-          {floors.map((room, index) => (
+          {workingFloor.map((room, index) => (
             <div
               key={index}
               draggable
@@ -325,6 +337,38 @@ function App() {
         </div>
         <div className="drop-zone" onDragOver={(e) => handleRoomDragOver(e)} onDrop={(e) => handleRoomDrop(e, 'floors')}>
           <div className="drop-message">Drag rooms here</div>
+        </div>
+        <div className="input-group">
+          <button
+            className="add-room-button"
+            onClick={handleAddFloor}
+            disabled={workingFloor.length === 0}
+          >
+            Add Floor
+          </button>
+        </div>
+      </div>
+      <div className="method">
+        <h2>Unassigned Floors</h2>
+        <div className="floor-list">
+          {/* Display unassigned floors */}
+          {unassignedFloors.map((floor, floorIndex) => (
+            <div key={floorIndex} className="floor">
+              <h3>Floor {floorIndex + 1}</h3>
+              {/* Display rooms within the unassigned floor */}
+              {floor.rooms.map((room, roomIndex) => (
+                <div
+                  key={roomIndex}
+                  className="room"
+                  draggable
+                  onDragStart={(e) => handleRoomDragStart(e, roomIndex)}
+                  onDragEnd={handleRoomDragEnd}
+                >
+                  Name: {room.name}, Surface Area: {room.surfaceArea}, Volume: {room.volume}, Light Intensity: {room.lightIntensity}, Energy Consumption: {room.energyConsumption}
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
       </div>
 
