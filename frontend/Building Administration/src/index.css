@@ -1,3 +1,11 @@
+* {
+  background-color: aquamarine;
+}
+
+.method{
+  margin-bottom: 20px;
+  border: 1px solid black;
+}
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -65,4 +73,61 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.input-group {
+  margin-bottom: 10px;
+}
+
+.input-field {
+  width: 200px;
+  padding: 5px;
+  margin-left: 10px;
+}
+
+.add-room-button {
+  margin-top: 10px;
+  padding: 8px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-room-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.room-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.room {
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.drop-zone {
+  border: 2px dashed #ccc;
+  padding: 10px;
+  margin: 10px;
+  height: 100px; /* Adjust the height as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0; /* Replace with your preferred color */
+  color: #333; /* Text color */
+  text-align: center;
+}
+
+.drop-message {
+  background-color: inherit; /* Inherit background color from the drop-zone */
+  padding: 5px;
+  margin: 0;
 }

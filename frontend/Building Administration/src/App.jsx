@@ -10,6 +10,70 @@ function App() {
   const [responseEnergyConsumption, setResponseEnergyConsumption] = useState('');
   const [responseHighConsumptionEntities, setResponseHighConsumptionEntities] = useState([]);
   const [showAlert, setShowAlert] = useState(false);
+  
+  const [rooms, setRooms] = useState([]);
+  const [floors, setFloors] = useState([]);
+  const [roomDetails, setRoomDetails] = useState({
+    name: '',
+    surfaceArea: '',
+    volume: '',
+    lightIntensity: '',
+    energyConsumption: ''
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setRoomDetails((prevDetails) => ({
+      ...prevDetails,
+      [name]: value
+    }));
+  };
+
+  const handleAddRoom = () => {
+    const newRoom = { ...roomDetails };
+    setRooms((prevRooms) => [...prevRooms, newRoom]);
+    setRoomDetails({
+      name: '',
+      surfaceArea: '',
+      volume: '',
+      lightIntensity: '',
+      energyConsumption: ''
+    });
+  };
+
+  const handleRoomDragStart = (e, index) => {
+    e.dataTransfer.setData('text/plain', index.toString());
+    e.target.style.opacity = '0.5';
+  };
+
+  const handleRoomDragEnd = (e) => {
+    e.target.style.opacity = '1';
+  };
+
+  const handleRoomDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const handleRoomDrop = (e, destination) => {
+    e.preventDefault();
+    const droppedRoomIndex = e.dataTransfer.getData('text/plain');
+    const newIndex = parseInt(droppedRoomIndex, 10);
+  
+    let roomToMove;
+  
+    if (destination === 'rooms') {
+      // Move room from floors to rooms
+      roomToMove = floors[newIndex];
+      setFloors((prevFloors) => prevFloors.filter((floor, index) => index !== newIndex));
+      setRooms((prevRooms) => [...prevRooms, roomToMove]);
+    } else if (destination === 'floors') {
+      // Move room from rooms to floors
+      roomToMove = rooms[newIndex];
+      setRooms((prevRooms) => prevRooms.filter((room, index) => index !== newIndex));
+      setFloors((prevFloors) => [...prevFloors, roomToMove]);
+    }
+  };
+  
 
   const handleSendJson = async () => {
     try {
@@ -105,33 +169,33 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Send JSON to Backend</h1>
-      <div>
+      <h1>Building Administration</h1>
+      <div class="method">
         <button onClick={handleSendJson}>Send JSON to Backend</button>
         {responseMessage && <p>{responseMessage}</p>}
       </div>
 
-      <div>
+      <div class="method">
         <button onClick={handleCalculateVolume}>Calculate Volume</button>
         {responseVolume && <p>{responseVolume}</p>}
       </div>
 
-      <div>
+      <div class="method">
         <button onClick={handleCalculateSurfaceArea}>Calculate Surface Area</button>
         {responseSurfaceArea && <p>{responseSurfaceArea}</p>}
       </div>
 
-      <div>
+      <div class="method">
         <button onClick={handleCalculateLightIntensity}>Calculate Light Intensity</button>
         {responseLightIntensity && <p>{responseLightIntensity}</p>}
       </div>
 
-      <div>
+      <div class="method">
         <button onClick={handleCalculateEnergyConsumption}>Calculate Energy Consumption</button>
         {responseEnergyConsumption && <p>{responseEnergyConsumption}</p>}
       </div>
 
-      <div>
+      <div class="method">
         <button onClick={handleHighConsumptionEntities}>High Consumption Entities</button>
         {responseHighConsumptionEntities.length > 0 && (
           <ul>
@@ -142,6 +206,128 @@ function App() {
         )}
         {showAlert && <p>No high consumption entities found.</p>}
       </div>
+
+      <div className="method">
+        <h2>Create Room</h2>
+        <div className="input-group">
+          <label>
+            Name:
+            <input
+              className="input-field"
+              type="text"
+              name="name"
+              value={roomDetails.name}
+              onChange={handleInputChange}
+            />
+          </label>
+        </div>
+        <div className="input-group">
+          <label>
+            Surface Area:
+            <input
+              className="input-field"
+              type="number"
+              name="surfaceArea"
+              value={roomDetails.surfaceArea}
+              onChange={handleInputChange}
+            />
+          </label>
+        </div>
+        <div className="input-group">
+          <label>
+            Volume:
+            <input
+              className="input-field"
+              type="number"
+              name="volume"
+              value={roomDetails.volume}
+              onChange={handleInputChange}
+            />
+          </label>
+        </div>
+        <div className="input-group">
+          <label>
+            Light Intensity:
+            <input
+              className="input-field"
+              type="number"
+              name="lightIntensity"
+              value={roomDetails.lightIntensity}
+              onChange={handleInputChange}
+            />
+          </label>
+        </div>
+        <div className="input-group">
+          <label>
+            Energy Consumption:
+            <input
+              className="input-field"
+              type="number"
+              name="energyConsumption"
+              value={roomDetails.energyConsumption}
+              onChange={handleInputChange}
+            />
+          </label>
+        </div>
+        <button
+          className="add-room-button"
+          onClick={handleAddRoom}
+          disabled={
+            !roomDetails.name ||
+            !roomDetails.surfaceArea ||
+            !roomDetails.volume ||
+            !roomDetails.lightIntensity ||
+            !roomDetails.energyConsumption ||
+            isNaN(Number(roomDetails.surfaceArea)) ||
+            isNaN(Number(roomDetails.volume)) ||
+            isNaN(Number(roomDetails.lightIntensity)) ||
+            isNaN(Number(roomDetails.energyConsumption))
+          }
+        >
+          Add Room
+        </button>
+      </div>
+      
+      <div className="method">
+        <h2>Unassigned Rooms</h2>
+        <div className="room-list">
+          {rooms.map((room, index) => (
+            <div
+              key={index}
+              draggable
+              onDragStart={(e) => handleRoomDragStart(e, index)}
+              onDragEnd={handleRoomDragEnd}
+              className="room"
+            >
+              Name: {room.name}, Surface Area: {room.surfaceArea}, Volume: {room.volume}, Light Intensity: {room.lightIntensity}, Energy Consumption: {room.energyConsumption}
+            </div>
+          ))}
+        </div>
+        <div className="drop-zone" onDragOver={(e) => handleRoomDragOver(e)} onDrop={(e) => handleRoomDrop(e, 'rooms')}>
+          <div className="drop-message">Drag rooms here</div>
+        </div>
+      </div>
+
+      <div className="method">
+        <h2>Create Floor</h2>
+        <div className="room-list">
+          {floors.map((room, index) => (
+            <div
+              key={index}
+              draggable
+              onDragStart={(e) => handleRoomDragStart(e, index)}
+              onDragEnd={handleRoomDragEnd}
+              className="room"
+            >
+              Name: {room.name}, Surface Area: {room.surfaceArea}, Volume: {room.volume}, Light Intensity: {room.lightIntensity}, Energy Consumption: {room.energyConsumption}
+            </div>
+          ))}
+        </div>
+        <div className="drop-zone" onDragOver={(e) => handleRoomDragOver(e)} onDrop={(e) => handleRoomDrop(e, 'floors')}>
+          <div className="drop-message">Drag rooms here</div>
+        </div>
+      </div>
+
     </div>
   );
 }
