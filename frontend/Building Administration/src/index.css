@@ -1,0 +1,213 @@
+* {
+  background-color: aquamarine;
+}
+
+.method{
+  margin-bottom: 20px;
+  border: 1px solid black;
+}
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+.input-group {
+  margin-bottom: 10px;
+}
+
+.input-field {
+  width: 200px;
+  padding: 5px;
+  margin-left: 10px;
+}
+
+.add-room-button {
+  margin-top: 10px;
+  padding: 8px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-room-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.room-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.room {
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+  background-color: #f0f0f0; /* Replace with your preferred color */
+}
+
+.drop-zone {
+  border: 2px dashed #ccc;
+  padding: 10px;
+  margin: 10px;
+  height: 100px; /* Adjust the height as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0; /* Replace with your preferred color */
+  color: #333; /* Text color */
+  text-align: center;
+}
+
+.drop-message {
+  background-color: inherit; /* Inherit background color from the drop-zone */
+  padding: 5px;
+  margin: 0;
+}
+
+.draggable-floor {
+  border: 2px solid #333;
+  padding: 15px;
+  margin-bottom: 20px;
+  cursor: grab;
+  background-color: #f0f0f0; /* Change background color */
+}
+
+.draggable-floor h3 {
+  background-color: inherit; /* Change background color */
+  padding: 8px;
+}
+
+.draggable-floor .room {
+  background-color: inherit; /* Change background color */
+  padding: 8px;
+}
+
+.floor-list {
+  border: 1px solid #ccc; /* Added border around the entire floor list section */
+  padding: 15px; /* Added padding around the entire floor list section */
+  margin-top: 20px; /* Increased margin-top */
+}
+
+.building {
+  border: 1px solid #ccc; /* Added border around the entire building section */
+  padding: 15px; /* Added padding around the entire building section */
+  margin-top: 20px; /* Increased margin-top */
+}
+
+.draggable-floor {
+  border: 2px solid #333;
+  padding: 15px;
+  margin-bottom: 20px;
+  cursor: grab;
+  background-color: #f0f0f0; /* Change background color */
+}
+
+.draggable-floor h3 {
+  background-color: inherit; /* Change background color */
+  padding: 8px;
+}
+
+.draggable-floor .room {
+  background-color: inherit; /* Change background color */
+  padding: 8px;
+}
+
+.building .floor {
+  border: 2px solid #333;
+  padding: 15px;
+  margin-bottom: 20px;
+  cursor: grab;
+  background-color: inherit; /* Change background color */
+}
+
+.building .floor h4 {
+  background-color: inherit; /* Change background color */
+  padding: 8px;
+}
+
+.building .floor .room {
+  background-color: inherit; /* Change background color */
+  padding: 8px;
+}
+
+.create-json-button {
+  background-color: red;
+  margin-left: 50px;
+}
+
+.input-limit {
+  margin-left: 10px; /* Adjust as needed */
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid black; /* Matching the button color */
+  background-color: inherit;
+}
