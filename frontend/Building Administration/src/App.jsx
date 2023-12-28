@@ -124,13 +124,12 @@ function App() {
     jsonObject[type] = data;
     const jsonString = JSON.stringify(jsonObject, null, 2);
     console.log(jsonString); // Displaying the JSON string for debugging
-    handleSendJson(jsonObject);
+    handleSendJson(jsonObject); // Send the JSON object directly, not as a string
   };
-
+  
   const handleSendJson = async (jsonToSend) => {
     try {
-      const jsonString = JSON.stringify(jsonToSend); // Convert the JSON object to a string
-      const result = await ApiService.setJson(jsonString);
+      const result = await ApiService.setJson(jsonToSend); // Send the JSON object as is
       setResponseMessage(result);
       setResponseSurfaceArea('');
       setResponseVolume('');
@@ -143,6 +142,7 @@ function App() {
       console.error(error);
     }
   };
+  
 
   const handleCalculateVolume = async () => {
     try {
