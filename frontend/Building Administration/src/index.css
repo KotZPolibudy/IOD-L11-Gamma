@@ -198,3 +198,8 @@ button:focus-visible {
   background-color: inherit; /* Change background color */
   padding: 8px;
 }
+
+.create-json-button {
+  background-color: red;
+  margin-left: 50px;
+}

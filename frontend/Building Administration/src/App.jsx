@@ -118,33 +118,20 @@ function App() {
       setWorkingBuilding((prevBuildings) => [...prevBuildings, floorToMove]);
     }
   };
-  
 
-  const handleSendJson = async () => {
+  const handleCreateJSON = (data, type) => {
+    const jsonObject = {};
+    jsonObject[type] = data;
+    const jsonString = JSON.stringify(jsonObject, null, 2);
+    console.log(jsonString); // Displaying the JSON string for debugging
+    handleSendJson(jsonObject);
+  };
+
+  const handleSendJson = async (jsonToSend) => {
     try {
-      const json = {
-        // Your JSON payload here
-        // Modify this object to match your expected JSON structure
-        building: {
-          floors: [
-            {
-              rooms: [
-                { name: 'Room1', surfaceArea: 20, volume: 30, lightIntensity: 50, energyConsumption: 100 },
-                { name: 'Room2', surfaceArea: 25, volume: 35, lightIntensity: 60, energyConsumption: 120 },
-              ],
-            },
-            {
-              rooms: [
-                {name: "Room3", surfaceArea: 18, volume: 28, lightIntensity: 45, energyConsumption: 90},
-                {name: "Room4", surfaceArea: 22, volume: 32, lightIntensity: 55, energyConsumption: 110}
-              ]
-            }
-          ],
-        },
-      };
-
-      const result = await ApiService.setJson(json);
-      setResponseMessage(result); // Update state with the response message from the backend
+      const jsonString = JSON.stringify(jsonToSend); // Convert the JSON object to a string
+      const result = await ApiService.setJson(jsonString);
+      setResponseMessage(result);
       setResponseSurfaceArea('');
       setResponseVolume('');
       setResponseLightIntensity('');
@@ -345,6 +332,9 @@ function App() {
               className="room"
             >
               Name: {room.name}, Surface Area: {room.surfaceArea}, Volume: {room.volume}, Light Intensity: {room.lightIntensity}, Energy Consumption: {room.energyConsumption}
+              <button className="create-json-button" onClick={() => handleCreateJSON(room, "room")}>
+                Analyse
+              </button>
             </div>
           ))}
         </div>
@@ -392,7 +382,12 @@ function App() {
               draggable
               onDragStart={(e) => handleDragStart(e, floorIndex)} // New function for handling floor drag
             >
-              <h3>Floor {floorIndex + 1}</h3>
+              <h3>Floor {floorIndex + 1}
+                <button className="create-json-button" onClick={() => handleCreateJSON(floor, "floor")}>
+                  Analyse
+                </button>
+              </h3>
+              
               {/* Display rooms within the unassigned floor */}
               {floor.rooms.map((room, roomIndex) => (
                 <div
@@ -451,7 +446,11 @@ function App() {
         <div className="building-list">
           {readyBuildings.map((building, buildingIndex) => (
             <div key={buildingIndex} className="building draggable-floor" draggable onDragStart={(e) => handleDragStart(e, buildingIndex)}>
-              <h3>Building {buildingIndex + 1}</h3>
+              <h3>Building {buildingIndex + 1}
+                <button className="create-json-button" onClick={() => handleCreateJSON(building, "building")}>
+                  Analyse
+                </button>
+              </h3>
               {/* Display floors within the building */}
               {building.floors.map((floor, floorIndex) => (
                 <div key={floorIndex} className="floor draggable-floor" draggable onDragStart={(e) => handleDragStart(e, floorIndex)}>
