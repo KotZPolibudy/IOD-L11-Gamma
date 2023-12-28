@@ -353,16 +353,18 @@ function App() {
         <div className="floor-list">
           {/* Display unassigned floors */}
           {unassignedFloors.map((floor, floorIndex) => (
-            <div key={floorIndex} className="floor">
+            <div
+              key={floorIndex}
+              className="floor draggable-floor" // Added the draggable-floor class
+              draggable
+              onDragStart={(e) => handleFloorDragStart(e, floorIndex)} // New function for handling floor drag
+            >
               <h3>Floor {floorIndex + 1}</h3>
               {/* Display rooms within the unassigned floor */}
               {floor.rooms.map((room, roomIndex) => (
                 <div
                   key={roomIndex}
                   className="room"
-                  draggable
-                  onDragStart={(e) => handleRoomDragStart(e, roomIndex)}
-                  onDragEnd={handleRoomDragEnd}
                 >
                   Name: {room.name}, Surface Area: {room.surfaceArea}, Volume: {room.volume}, Light Intensity: {room.lightIntensity}, Energy Consumption: {room.energyConsumption}
                 </div>
@@ -371,6 +373,7 @@ function App() {
           ))}
         </div>
       </div>
+
 
     </div>
   );

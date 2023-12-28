@@ -131,3 +131,27 @@ button:focus-visible {
   padding: 5px;
   margin: 0;
 }
+
+.draggable-floor {
+  border: 2px solid #333;
+  padding: 15px;
+  margin-bottom: 20px;
+  cursor: grab;
+  background-color: #f0f0f0; /* Change background color */
+}
+
+.draggable-floor h3 {
+  background-color: inherit; /* Change background color */
+  padding: 8px;
+}
+
+.draggable-floor .room {
+  background-color: inherit; /* Change background color */
+  padding: 8px;
+}
+
+.floor-list {
+  border: 1px solid #ccc; /* Added border around the entire floor list section */
+  padding: 15px; /* Added padding around the entire floor list section */
+  margin-top: 20px; /* Increased margin-top */
+}
