@@ -10,6 +10,7 @@ function App() {
   const [responseEnergyConsumption, setResponseEnergyConsumption] = useState('');
   const [responseHighConsumptionEntities, setResponseHighConsumptionEntities] = useState([]);
   const [showAlert, setShowAlert] = useState(false);
+  const [limit, setLimit] = useState(100);
   
   const [unassignedRooms, setUnassignedRooms] = useState([]);
   const [roomDetails, setRoomDetails] = useState({
@@ -186,14 +187,15 @@ function App() {
 
   const handleHighConsumptionEntities = async () => {
     try {
-      const highConsumptionEntitiesData = await ApiService.getHighConsumptionEntities(100); // Example limit value
-      setResponseMessage('');
-      setResponseHighConsumptionEntities(highConsumptionEntitiesData.RoomNames); // Update state with high consumption entities data
-      if (highConsumptionEntitiesData.RoomNames.length === 0) {
-        setShowAlert(true);
-      } else {
-        setShowAlert(false);
+      const limitValue = parseInt(limit, 10);
+      if (isNaN(limitValue) || limitValue <= 0) {
+        alert('Please enter a valid limit');
+        return;
       }
+
+      const highConsumptionEntitiesData = await ApiService.getHighConsumptionEntities(limitValue);
+      setResponseHighConsumptionEntities(highConsumptionEntitiesData.RoomNames);
+      setShowAlert(highConsumptionEntitiesData.RoomNames.length === 0);
     } catch (error) {
       console.error(error);
     }
@@ -202,43 +204,6 @@ function App() {
   return (
     <div className="App">
       <h1>Building Administration</h1>
-      <div class="method">
-        <button onClick={handleSendJson}>Send JSON to Backend</button>
-        {responseMessage && <p>{responseMessage}</p>}
-      </div>
-
-      <div class="method">
-        <button onClick={handleCalculateVolume}>Calculate Volume</button>
-        {responseVolume && <p>{responseVolume}</p>}
-      </div>
-
-      <div class="method">
-        <button onClick={handleCalculateSurfaceArea}>Calculate Surface Area</button>
-        {responseSurfaceArea && <p>{responseSurfaceArea}</p>}
-      </div>
-
-      <div class="method">
-        <button onClick={handleCalculateLightIntensity}>Calculate Light Intensity</button>
-        {responseLightIntensity && <p>{responseLightIntensity}</p>}
-      </div>
-
-      <div class="method">
-        <button onClick={handleCalculateEnergyConsumption}>Calculate Energy Consumption</button>
-        {responseEnergyConsumption && <p>{responseEnergyConsumption}</p>}
-      </div>
-
-      <div class="method">
-        <button onClick={handleHighConsumptionEntities}>High Consumption Entities</button>
-        {responseHighConsumptionEntities.length > 0 && (
-          <ul>
-            {responseHighConsumptionEntities.map((entity, index) => (
-              <li key={index}>{entity}</li>
-            ))}
-          </ul>
-        )}
-        {showAlert && <p>No high consumption entities found.</p>}
-      </div>
-
       <div className="method">
         <h2>Create Room</h2>
         <div className="input-group">
@@ -466,6 +431,47 @@ function App() {
             </div>
           ))}
         </div>
+      </div>
+      
+      <div class="method">
+        <button onClick={handleCalculateVolume}>Calculate Volume</button>
+        {responseVolume && <p>{responseVolume}</p>}
+      </div>
+
+      <div class="method">
+        <button onClick={handleCalculateSurfaceArea}>Calculate Surface Area</button>
+        {responseSurfaceArea && <p>{responseSurfaceArea}</p>}
+      </div>
+
+      <div class="method">
+        <button onClick={handleCalculateLightIntensity}>Calculate Light Intensity</button>
+        {responseLightIntensity && <p>{responseLightIntensity}</p>}
+      </div>
+
+      <div class="method">
+        <button onClick={handleCalculateEnergyConsumption}>Calculate Energy Consumption</button>
+        {responseEnergyConsumption && <p>{responseEnergyConsumption}</p>}
+      </div>
+
+      <div className="method">
+        <button onClick={handleHighConsumptionEntities} className="custom-button">
+          High Consumption Entities
+          <input
+            type="number"
+            value={limit}
+            onChange={(e) => setLimit(e.target.value)}
+            placeholder="Enter threshold"
+            className="input-limit"
+          />
+        </button>
+        {responseHighConsumptionEntities.length > 0 && (
+          <ul>
+            {responseHighConsumptionEntities.map((entity, index) => (
+              <li key={index}>{entity}</li>
+            ))}
+          </ul>
+        )}
+        {showAlert && <p>No high consumption entities found.</p>}
       </div>
 
 

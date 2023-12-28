@@ -203,3 +203,11 @@ button:focus-visible {
   background-color: red;
   margin-left: 50px;
 }
+
+.input-limit {
+  margin-left: 10px; /* Adjust as needed */
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid black; /* Matching the button color */
+  background-color: inherit;
+}
