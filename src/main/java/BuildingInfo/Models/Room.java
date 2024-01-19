@@ -110,11 +110,16 @@ public class Room implements Entity {
         return this.energyConsumption;
     }
 
+    /**
+     *
+     * @param limit given maximum value of room energy consumption
+     * @return array of Room-Entities which energy consumption is over the limit
+     */
     @Override
-    public List<String> findHighConsumption(double limit) {
-        List<String> highConsumptionEntities = new ArrayList<>();
+    public List<Room> findHighConsumption(double limit) {
+        List<Room> highConsumptionEntities = new ArrayList<>();
         if (this.energyConsumption > limit) {
-            highConsumptionEntities.add(this.name);
+            highConsumptionEntities.add(this);
         }
         return highConsumptionEntities;
     }

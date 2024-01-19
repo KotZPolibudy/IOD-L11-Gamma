@@ -8,6 +8,11 @@ import org.slf4j.LoggerFactory;
 
 public class FloorParser {
 
+    /**
+     *
+     * @param floorNode JSON node having information for floor construction
+     * @return Floor-Entity created from given informations
+     */
     public static Floor parseFloorFromJson(JsonNode floorNode) {
         ch.qos.logback.classic.Logger logger = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
         logger.setLevel(ch.qos.logback.classic.Level.DEBUG);

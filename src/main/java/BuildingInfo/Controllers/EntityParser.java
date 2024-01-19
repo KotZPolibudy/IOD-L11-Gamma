@@ -9,20 +9,40 @@ public class EntityParser {
 
     private JsonNode jsonNode;
 
+    /**
+     * Public constructor of EntityParser
+     */
     public EntityParser() {
     }
 
+    /**
+     * Setter entity parser
+     * @param jsonNode json node
+     */
     public EntityParser(JsonNode jsonNode) {
         this.jsonNode = jsonNode;
     }
 
+    /**
+     * Getter of json node
+     * @return json node
+     */
     public JsonNode getJsonNode() {
         return jsonNode;
     }
 
+    /**
+     * Setter of json node
+     * @param jsonNode json node
+     */
     public void setJsonNode(JsonNode jsonNode) {
         this.jsonNode = jsonNode;
     }
+
+    /**
+     * Object parser
+     * @return parse of given Entity (Room / Floor / Building)
+     */
     public Object parse() {
         JsonNode node = this.jsonNode;
         Object result = null;

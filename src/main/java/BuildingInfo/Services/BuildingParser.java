@@ -4,6 +4,11 @@ import BuildingInfo.Models.*;
 import com.fasterxml.jackson.databind.JsonNode;
 
 public class BuildingParser {
+    /**
+     *
+     * @param buildingNode JSON node having information for building construction
+     * @return Building-Entity created from given informations
+     */
     public static Building parseBuildingFromJson(JsonNode buildingNode) {
         JsonNode floors = buildingNode.get("floors");
         Floor[] buildingFloors = new Floor[floors.size()];
