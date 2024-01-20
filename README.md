@@ -2,8 +2,8 @@
 For building administrators who want to optimize building management costs, our Building Info application will enable the acquisition of information about building parameters at the level of rooms, floors and entire buildings. The application will be available through a GUI and also as a remote API so it can be integrated with existing tools.
 
 # General Info
-- Lacation is a Building, a Floor, or a Room
-- Building has a list of Floors, each of which have a list of rooms on corresponding floor 
+- A Location is a Building, a Floor, or a Room
+- A Building has a list of Floors, each of which have a list of rooms on corresponding floor 
 - Each location has:
    * number (int) - a unique Number (Roomnumber, Floornumber, Buildingnumber)
 - a room has also these parameters:
