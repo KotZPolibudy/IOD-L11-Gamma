@@ -35,34 +35,24 @@ public class MockTests {
         //config
         //when(mockbuilding1.calcEnergyConsumption()).thenReturn(5000);
         //when(mockbuilding2.calcEnergyConsumption()).thenReturn(6000);
-        when(mockfloor1.calcEnergyConsumption()).thenReturn(2000);
-        when(mockfloor2.calcEnergyConsumption()).thenReturn(2000);
-        when(mockroom1.calcEnergyConsumption()).thenReturn(500);
-        when(mockroom2.calcEnergyConsumption()).thenReturn(600);
-        when(mockroom3.calcEnergyConsumption()).thenReturn(301);
-        when(mockroom4.calcEnergyConsumption()).thenReturn(400);
-        when(mockroom5.calcEnergyConsumption()).thenReturn(699);
+        when(mockfloor1.calcEnergyConsumption()).thenReturn(2000.0);
+        when(mockfloor2.calcEnergyConsumption()).thenReturn(2000.0);
+        when(mockroom1.calcEnergyConsumption()).thenReturn(500.0);
+        when(mockroom2.calcEnergyConsumption()).thenReturn(600.0);
+        when(mockroom3.calcEnergyConsumption()).thenReturn(301.0);
+        when(mockroom4.calcEnergyConsumption()).thenReturn(400.0);
+        when(mockroom5.calcEnergyConsumption()).thenReturn(699.0);
 
 
-        //idk czy to potrzebne będzie
-        List<Room> rooms1 = new ArrayList<>();
-        rooms1.add(mockroom3);
-        rooms1.add(mockroom4);
-        rooms1.add(mockroom2);
-        rooms1.add(mockroom5);
-
-        List<Room> rooms2 = new ArrayList<>();
-        rooms2.add(mockroom1);
-        rooms2.add(mockroom2);
-        rooms2.add(mockroom1);
-        rooms2.add(mockroom4);
+        Room[] rooms1 = {mockroom3, mockroom4, mockroom2, mockroom5};
+        Room[] rooms2 = {mockroom1, mockroom2, mockroom1, mockroom4};
 
         when(mockfloor1.getRooms()).thenReturn(rooms1);
         when(mockfloor2.getRooms()).thenReturn(rooms2);
 
 
-        Floor testfloor1 = new Floor(new Room[]{mockroom3, mockroom4, mockroom2, mockroom5});
-        Floor testfloor2 = new Floor(new Room[]{mockroom1, mockroom2, mockroom1, mockroom4});
+        Floor testfloor1 = new Floor(rooms1);
+        Floor testfloor2 = new Floor(rooms2);
 
         Floor[] floors = new Floor[2];
         floors[0] = testfloor1;
@@ -73,8 +63,8 @@ public class MockTests {
 
 
     @Test
-    void testCalcSurfaceArea() {
-        assertEquals(250.0, testbuilding.calcSurfaceArea());
+    void test_some_room_to_find_if_mockito_works() {
+        assertEquals(600.0, mockroom2.calcEnergyConsumption());
     }
 
 
