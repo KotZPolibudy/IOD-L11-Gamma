@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FloorTest {
+public class FloorTest {
 
     Floor testfloor;
     @BeforeEach

@@ -6,5 +6,8 @@
   <tagletArtifacts>
     <tagletArtifact />
   </tagletArtifacts>
-  <javadocResourcesDirectory>src/main/javadoc</javadocResourcesDirectory>
+  <links>
+    <link>../apidocs</link>
+  </links>
+  <javadocResourcesDirectory>src/test/javadoc</javadocResourcesDirectory>
 </javadocOptions>

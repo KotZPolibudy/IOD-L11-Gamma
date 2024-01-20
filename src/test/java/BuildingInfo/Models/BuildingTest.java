@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BuildingTest {
+public class BuildingTest {
 
     Building testbuilding;
 
