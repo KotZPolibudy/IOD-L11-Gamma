@@ -94,7 +94,7 @@ public class Floor implements Entity {
     @Override
     public List<Room> findHighConsumption(double limit) {
         List<Room> highConsumptionEntities = new ArrayList<>();
-        for (Room room : this.rooms) {
+        for (Room room : this.getRooms()) {
             if (room.getEnergyConsumption() > limit){
                 highConsumptionEntities.add(room);
             }
