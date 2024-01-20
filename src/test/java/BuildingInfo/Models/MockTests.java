@@ -1,14 +1,10 @@
 package BuildingInfo.Models;
-
         import java.util.ArrayList;
         import java.util.List;
-
         import org.junit.jupiter.api.BeforeAll;
         import org.junit.jupiter.api.BeforeEach;
         import org.junit.jupiter.api.Test;
-
         import static org.junit.jupiter.api.Assertions.*;
-
         import static org.mockito.Mockito.*;
 
 public class MockTests {
@@ -33,8 +29,8 @@ public class MockTests {
     void setUp(){
 
         //config
-        //when(mockbuilding1.calcEnergyConsumption()).thenReturn(5000);
-        //when(mockbuilding2.calcEnergyConsumption()).thenReturn(6000);
+        //when(mockbuilding1.calcEnergyConsumption()).thenReturn(5000.0);
+        //when(mockbuilding2.calcEnergyConsumption()).thenReturn(6000.0);
         when(mockfloor1.calcEnergyConsumption()).thenReturn(2000.0);
         when(mockfloor2.calcEnergyConsumption()).thenReturn(2000.0);
         when(mockroom1.calcEnergyConsumption()).thenReturn(500.0);
@@ -43,13 +39,11 @@ public class MockTests {
         when(mockroom4.calcEnergyConsumption()).thenReturn(400.0);
         when(mockroom5.calcEnergyConsumption()).thenReturn(699.0);
 
-
         Room[] rooms1 = {mockroom3, mockroom4, mockroom2, mockroom5};
         Room[] rooms2 = {mockroom1, mockroom2, mockroom1, mockroom4};
 
         when(mockfloor1.getRooms()).thenReturn(rooms1);
         when(mockfloor2.getRooms()).thenReturn(rooms2);
-
 
         Floor testfloor1 = new Floor(rooms1);
         Floor testfloor2 = new Floor(rooms2);
@@ -68,6 +62,18 @@ public class MockTests {
     }
 
 
+    //Nadal nie rozumiem, dlaczego niby testfloor1 jest nullem. :<
+    @Test
+    void testFindEnergyConsumingRoomsInFloor1(){
+        List<Room> pom = testfloor1.findHighConsumption(500.0);
+        assertEquals(2, pom.toArray().length);
+    }
 
+    @Test
+    void testFindEnergyConsumingRoomsInFloor2(){
+        List<Room> pom = testfloor1.findHighConsumption(450.0);
+        assertEquals(3, pom.size());
+        assertEquals(3, pom.toArray().length);
+    }
 
 }
