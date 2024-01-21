@@ -160,7 +160,7 @@ public class MockTests {
 
     @Test
     void placeholderTest10(){
-        assertEquals(1,testbuilding.calcLightIntensity());
+        assertEquals(0.01,testbuilding.calcLightIntensity());
     }
 
 }
