@@ -7,5 +7,5 @@ public interface Entity {
     double calcVolume();
     double calcLightIntensity();
     double calcEnergyConsumption();
-    List<Room> findHighConsumption(double limit);
+    List<String> findHighConsumption(double limit);
 }

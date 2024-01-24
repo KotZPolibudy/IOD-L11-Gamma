@@ -92,12 +92,12 @@ public class Building implements Entity {
      * @return array of Room-Entities which energy consumption is over the limit
      */
     @Override
-    public List<Room> findHighConsumption(double limit) {
-        List<Room> highConsumptionEntities = new ArrayList<>();
+    public List<String> findHighConsumption(double limit) {
+        List<String> highConsumptionEntities = new ArrayList<>();
         for (Floor floor : this.getFloors()) {
             for (Room room : floor.getRooms()) {
                 if (room.getEnergyConsumption() > limit){
-                    highConsumptionEntities.add(room);
+                    highConsumptionEntities.add(room.getName());
                 }
             }
         }
