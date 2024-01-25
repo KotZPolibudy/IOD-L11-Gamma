@@ -62,7 +62,7 @@ public class FloorTest {
 
     @Test
     void testFindHighConsumption() {
-        List<Room> rooms = testfloor.findHighConsumption(150);
-        assertEquals(rooms.get(0).getEnergyConsumption(), 200);
+        List<String> rooms = testfloor.findHighConsumption(150);
+        assertEquals(rooms.get(0), "Room 3");
     }
 }
